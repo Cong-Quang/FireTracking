@@ -1,0 +1,17 @@
+fire_dataset/
+module/
+*.pt
+__pycache__/
+.venv/
+.env
+.vscode/
+.idea/
+Video test/
+v2/dataset/
+v2/model/
+v2/result/
+v2/result_tracking/
+v2/fire_images/
+v2/smoke_images/
+v2/non_fire_images/
+

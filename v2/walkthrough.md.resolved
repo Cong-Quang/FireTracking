@@ -1,0 +1,52 @@
+# Fire Detection System - Walkthrough
+
+Hệ thống phát hiện cháy từ hình ảnh (Fire Detection System) đã được xây dựng hoàn thiện các file mã nguồn. Toàn bộ kịch bản triển khai (pipeline) theo yêu cầu của đồ án đã được hiện thực hóa bằng PyTorch và Streamlit.
+
+## 📁 Cấu trúc thư mục hiện tại
+
+```
+v2/
+├── data_preparation.py  # Script chia data và phân tích EDA
+├── dataset/             # Thư mục dataset (được sinh ra sau khi chạy data_preparation.py)
+├── dataset.py           # PyTorch Dataset Loader và Augmentation
+├── models.py            # Định nghĩa Custom CNN và Transfer Learning models
+├── train.py             # Script huấn luyện mô hình
+├── evaluate.py          # Script đánh giá mô hình và in Confusion Matrix
+├── app.py               # Ứng dụng Streamlit demo
+├── requirements.txt     # (Nên có) Các thư viện cần thiết
+```
+
+## 🚀 Hướng dấn khởi chạy dự án
+
+Do môi trường Windows hiện tại sử dụng Python 3.14 chưa hỗ trợ PyTorch bản pre-built, bạn nên sử dụng **Ubuntu (WSL)** đã có sẵn Python 3.10. Khuyến nghị làm theo các bước sau trong Terminal của WSL (`wsl`):
+
+### Bước 1: Cài đặt thư viện
+```bash
+pip install torch torchvision torchaudio numpy pandas matplotlib scikit-learn opencv-python streamlit seaborn
+```
+
+### Bước 2: Chuẩn bị dữ liệu (Data Preparation & EDA)
+Chạy script để phân tích thư mục `fire_images` và `non_fire_images`, đồng thời chia tập Train/Val/Test vào thư mục `dataset/`:
+```bash
+python data_preparation.py
+```
+*Kết quả EDA sẽ được lưu trong thư mục `results/`.*
+
+### Bước 3: Huấn luyện mô hình (Training)
+Bạn có thể chọn 1 trong các mô hình: `custom_cnn`, `resnet50`, `mobilenet_v2`, `vgg16`, `efficientnet`. Ví dụ huấn luyện với ResNet50:
+```bash
+python train.py --model resnet50 --epochs 10
+```
+*Trọng số tốt nhất (Best weights) sẽ được tự động lưu vào thư mục `checkpoints/resnet50_best.pth`.*
+
+### Bước 4: Đánh giá mô hình (Evaluation)
+```bash
+python evaluate.py --model resnet50
+```
+*Kết quả Accuracy, Precision, Recall, F1 sẽ in ra màn hình. Confusion Matrix sẽ lưu ở `results/resnet50_confusion_matrix.png`.*
+
+### Bước 5: Chạy ứng dụng Demo (Streamlit App)
+```bash
+streamlit run app.py
+```
+Sau khi chạy lệnh trên, mở trình duyệt với địa chỉ `http://localhost:8501` để sử dụng giao diện web. Bạn có thể chọn mô hình đã train, upload ảnh để xem kết quả cảnh báo cháy!
