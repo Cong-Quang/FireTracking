@@ -1,10 +1,10 @@
-# 🔥 FireTracking - Hệ thống Giám sát & Phát hiện Cháy sớm
+# 🔥 FireTracking - Ứng dụng thị giác máy tính trong nhận diện hỏa hoạn và cảnh báo sớm
 
 Dự án này tập trung vào việc xây dựng hệ thống phát hiện cháy sử dụng Deep Learning, từ khâu thu thập dữ liệu, gán nhãn tự động đến huấn luyện và triển khai ứng dụng giám sát.
 
 ## 🚀 Tiến trình Tuần này (Cập nhật 15/03/2026)
 
-Tuần này, đã đạt được những bước tiến quan trọng trong việc nâng cấp hệ thống lên phiên bản **v2**, bao gồm:
+Tuần này, Em đã đạt được những bước tiến quan trọng trong việc nâng cấp hệ thống lên phiên bản **v2**, bao gồm:
 
 ### 1. Xây dựng Pipeline Huấn luyện Toàn diện (`v2/`)
 - **Đa kiến trúc mô hình:** Hỗ trợ huấn luyện nhiều loại mô hình khác nhau để so sánh hiệu năng:
